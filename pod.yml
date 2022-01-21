@@ -1,12 +1,38 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: tetrisapp
+  name: tetris
   labels:
     app: tetrisapp
 spec:
-  containers:
-    - name: tetrisapp
-      image: darrs08/tetrisapp:tagVersion
-      ports:
-        - containerPort: 8080
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tetrisapp
+  template:
+    metadata:
+      labels:
+        app: tetrisapp
+    spec:
+      containers:
+      - name: tetrisappserver
+        image: darrs08/tetrisapp:latest
+        ports:
+        - containerPort: 3000
+        
+        
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodeapp-service
+spec:
+  selector:
+    app: nodeapp 
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 5001
+    targetPort: 3000
+    nodePort: 31110
