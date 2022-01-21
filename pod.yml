@@ -35,4 +35,4 @@ spec:
   - protocol: TCP
     port: 5001
     targetPort: 3000
-    nodePort: 31110
+    nodePort: 30007
