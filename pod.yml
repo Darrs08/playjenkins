@@ -26,10 +26,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodeapp-service
+  name: tetris
 spec:
   selector:
-    app: nodeapp 
+    app: tetrisapp
   type: LoadBalancer
   ports:
   - protocol: TCP
