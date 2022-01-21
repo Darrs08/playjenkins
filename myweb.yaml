@@ -16,7 +16,7 @@ spec:
         app: myweb
     spec:
       containers:
-      - image: darrs08/tetrisapp:latest
+      - image: darrs08/myweb:$BUILD_NUMBER
         imagePullPolicy: Always
         name: myweb
 
