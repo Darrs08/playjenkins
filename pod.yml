@@ -26,7 +26,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: tetris-service
+  name: tetrisservice
 spec:
   selector:
     app: tetrisapp
