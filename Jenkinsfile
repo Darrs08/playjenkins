@@ -1,21 +1,21 @@
 pipeline {
     agent any
     environment {
-      registry = "tetris/myweb"
+    
       dockerImage = ""
       DOCKER_TAG = getDockerTag()
     }
     stages{
         stage('Build Docker Image') {
             steps {
-                sh "docker build . -t registry:${DOCKER_TAG}"
+                sh "docker build . -t tetris/myweb:${DOCKER_TAG}"
             }
         }
         stage('DokerHub Push') {
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh "docker login -u darrs08 -p ${dockerHubPwd}"
-                    sh "docker push registry:${DOCKER_TAG}"
+                    sh "docker push tetris/myweb:${DOCKER_TAG}"
                 }
             }
         }
