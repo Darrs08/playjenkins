@@ -6,14 +6,14 @@ pipeline {
     stages{
         stage('Build Docker Image') {
             steps {
-                sh "docker build . -t darrs08/tetrisapp:${DOCKER_TAG}"
+                sh "docker build . -t darrs08/tetrisapp:latest"
             }
         }
         stage('DokerHub Push') {
             steps{
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh "docker login -u darrs08 -p ${dockerHubPwd}"
-                    sh "docker push darrs08/tetrisapp:${DOCKER_TAG}"
+                    sh "docker push darrs08/tetrisapp:latest"
                 }
             }
         }
