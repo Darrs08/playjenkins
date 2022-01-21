@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nodeapp
+  name: tetrisapp
   labels:
-    app: nodeapp
+    app: tetrisapp
 spec:
   containers:
-    - name: nodeapp
+    - name: tetrisapp
       image: darrs08/tetrisapp:tagVersion
       ports:
         - containerPort: 8080
